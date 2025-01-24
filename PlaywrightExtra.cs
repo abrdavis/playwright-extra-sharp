@@ -271,8 +271,12 @@ public class PlaywrightExtra : IBrowser, IDisposable
     {
         if(_browser is not null)
             await _browser.CloseAsync();
-        if(_browserContext is not null)
-            await _browserContext.CloseAsync();
+    }
+
+    public async Task CloseAsync(BrowserCloseOptions? options = null)
+    {
+        if (_browser is not null)
+            await _browser.CloseAsync(options);
     }
 
     public Task<ICDPSession> NewBrowserCDPSessionAsync()
