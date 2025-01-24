@@ -302,7 +302,8 @@ public class PlaywrightExtra : IBrowser, IDisposable
 
     public async void Dispose()
     {
-        await _browser.DisposeAsync();
+        if(_browser is not null)
+            await _browser.DisposeAsync();
         _playwright?.Dispose();
     }
 
